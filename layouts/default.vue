@@ -1,4 +1,5 @@
 <template>
+  <!-- Componente vutify para la configuracion inicial -->
   <v-app dark>
     <v-navigation-drawer
       v-model="drawer"
