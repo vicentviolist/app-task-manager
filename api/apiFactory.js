@@ -1,6 +1,7 @@
 import api from "./index";
 import { transformToParamsString } from "./utils/apiUtils";
 const path = "/tasks";
+// Token necesario en todos los endpoints que requiere esta prueba tecnica
 import { token } from "../api/enviroment";
 
 //Note:Se crean los metods CRUD que se utilizaran a lo largo del proyecto

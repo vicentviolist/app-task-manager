@@ -1,4 +1,5 @@
 <template>
+  <!-- Componente tabla vutify utilizada para mostrar la información de consulta de tareas y el manejo de acciones -->
   <v-data-table
     height="auto"
     :headers="headers"
@@ -7,6 +8,7 @@
     class="elevation-1"
   >
     <template v-slot:item.id="item">
+      <!-- Slot de componente tabla para mostrar acciones de la tabla -->
       <v-chip
         class="ma-2"
         color="primary"
@@ -44,9 +46,11 @@ export default {
   },
   methods: {
     detailTask(task) {
+      /* Emitimos eventos al componente padre que contienen la información de la tarea seleccionada */
       this.$emit("detailTask", task);
     },
     showDeleteTask(task) {
+      /* Emitimos eventos al componente padre que contienen la información de la tarea seleccionada */
       this.$emit("showDeleteTask", task);
     },
   },
@@ -54,14 +58,17 @@ export default {
     headers: {
       type: Array,
       default: [],
+      description: "Encabezados de la tabla",
     },
     data: {
       type: Array,
       default: [],
+      description: "Información de la tabla",
     },
     loading: {
       type: Boolean,
       default: false,
+      description: "Bandera para saber si mostrar animación de loading",
     },
   },
 };

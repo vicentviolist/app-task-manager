@@ -1,6 +1,7 @@
 <template>
   <v-dialog v-model="show" scrollable width="auto" persistent>
     <v-card>
+      <!-- Textos dinamicos dependiendo si es edición o creación -->
       <v-card-title>{{ !isEdit ? "Create task" : "Edit task" }}</v-card-title>
       <v-divider></v-divider>
       <v-card-text style="height: 400px">
@@ -52,6 +53,7 @@
                     @change="menu = false"
                   >
                     <v-spacer></v-spacer>
+                    <!-- Cerramos menú del selector de fechas -->
                     <v-btn text color="primary darken-2" @click="menu = false">
                       Cancel
                     </v-btn>
@@ -87,8 +89,10 @@
       <v-card-actions class="d-flex justify-space-between">
         <div>
           <v-btn color="blue-darken-1" variant="text" @click="closeDetail()">
-            Close </v-btn
-          ><v-btn
+            Close
+          </v-btn>
+          <!-- Emitimos al componente padre el evento para crear y el respectivo formulario con la información necesaria -->
+          <v-btn
             color="primary darken-2"
             class="ml-3"
             variant="text"
@@ -109,6 +113,7 @@ export default {
   data() {
     return {
       filterData: {},
+      // Nombre de v-models utilizados en el formulario
       filterDataAux: {
         title: null,
         is_completed: false,
@@ -127,10 +132,13 @@ export default {
     this.filterData = this.filterDataAux;
   },
   methods: {
+    // Emitimos el evento para cerra la dialog de formulario
     closeDetail() {
       this.$emit("closeDetail");
     },
+    // Emitimos al componente padre el evento para crear y el respectivo formulario con la información necesaria
     createTasks() {
+      // Vemos si va is_completed en nustra peticion
       this.filterData.is_completed
         ? this.filterData.is_completed
         : (this.filterData.is_completed = false);
@@ -138,6 +146,7 @@ export default {
     },
   },
   watch: {
+    // Utilizamos el hook watch para ver cuando dataEdit reciba un nuevo valor y de esta forma actualizamos la información de formulario
     dataEdit: {
       handler(newData) {
         this.filterData = newData;
@@ -150,18 +159,22 @@ export default {
     show: {
       type: Boolean,
       default: false,
+      description: "Bandera para saber si mostrar o no dialog",
     },
     rulesRequired: {
       type: Array,
       default: [],
+      description: "Reglas de formulario",
     },
     dataEdit: {
       type: Object,
       default: {},
+      description: "Información que podria contener el formulario",
     },
     isEdit: {
       type: Boolean,
       default: false,
+      description: "Bandera para saber si estaremos editando o creando tareas",
     },
   },
 };
