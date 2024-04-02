@@ -38,22 +38,27 @@ export default {
     title: {
       type: String,
       default: "The task will be deleted",
+      description: "Titulo alimentado por medio de props",
     },
     description: {
       type: String,
       default: "Confirm delete?",
+      description: "Descripcion alimentada por medio de props",
     },
     btnCancelText: {
       type: String,
       default: "Cancel",
+      description: "Texto boton cancel alimentado por medio de props",
     },
     btnOkText: {
       type: String,
       default: "Confirm",
+      description: "Texto boton confirm alimentado por medio de props",
     },
     show: {
       type: Boolean,
       default: false,
+      description: "Bandera para mostrar o no dialog",
     },
   },
 };
