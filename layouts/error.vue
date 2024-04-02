@@ -1,5 +1,6 @@
 <template>
   <v-app dark>
+    <!-- Layout por defecto para el manejo de los errores al no tener rutas existente -->
     <h1 v-if="error.statusCode === 404">
       {{ pageNotFound }}
     </h1>
